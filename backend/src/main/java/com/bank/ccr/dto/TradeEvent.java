@@ -1,0 +1,1 @@
+package com.bank.ccr.dto; import java.math.BigDecimal; import java.time.Instant; public record TradeEvent(String eventId,String eventType,String tradeId,String counterpartyId,String product,BigDecimal notional,Instant eventTime){}

@@ -1,0 +1,1 @@
+package com.bank.ccr.repository; import com.bank.ccr.model.CollateralPosition; import org.springframework.data.jpa.repository.JpaRepository; import java.util.List; public interface CollateralRepository extends JpaRepository<CollateralPosition,Long>{List<CollateralPosition> findByCounterpartyId(String id);}

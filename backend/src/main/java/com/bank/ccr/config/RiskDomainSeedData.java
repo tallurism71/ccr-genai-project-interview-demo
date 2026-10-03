@@ -1,0 +1,3 @@
+package com.bank.ccr.config;
+import com.bank.ccr.model.*; import com.bank.ccr.repository.*; import org.springframework.boot.CommandLineRunner; import org.springframework.context.annotation.*; import java.math.BigDecimal;
+@Configuration public class RiskDomainSeedData { @Bean CommandLineRunner riskDomainSeed(CollateralRepository c, NettingSetRepository n){ return args->{ if(n.count()==0){n.save(new NettingSet("NS-001","CP-001","ISDA Master Agreement","New York",true));} if(c.count()==0){c.save(new CollateralPosition("CP-001","NS-001","CASH","USD",new BigDecimal("25000000"),BigDecimal.ZERO)); c.save(new CollateralPosition("CP-001","NS-001","US_TREASURY","USD",new BigDecimal("10000000"),new BigDecimal("2.0")));} }; } }

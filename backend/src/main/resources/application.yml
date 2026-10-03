@@ -1,0 +1,36 @@
+server:
+  port: ${PORT:8080}
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/ccr}
+    username: ${DB_USER:ccr}
+    password: ${DB_PASSWORD:ccr}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    consumer:
+      group-id: ccr-risk
+      auto-offset-reset: earliest
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: com.bank.ccr.dto
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+management:
+  endpoints.web.exposure.include: health,info
+app:
+  llm:
+    mode: ${LLM_MODE:mock}
+    base-url: ${LLM_BASE_URL:http://localhost:8000/v1}
+    model: ${LLM_MODEL:local-model}
+  kafka:
+    enabled: ${KAFKA_ENABLED:false}
+    trade-topic: ${KAFKA_TRADE_TOPIC:ccr.trade-events}
+  rag:
+    mode: ${RAG_MODE:mock}
+    base-url: ${RAG_BASE_URL:http://localhost:8090}
+  security:
+    mode: ${SECURITY_MODE:local}

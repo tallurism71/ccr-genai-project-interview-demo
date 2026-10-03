@@ -1,0 +1,1 @@
+package com.bank.ccr.repository; import com.bank.ccr.model.NettingSet; import org.springframework.data.jpa.repository.JpaRepository; import java.util.List; public interface NettingSetRepository extends JpaRepository<NettingSet,String>{List<NettingSet> findByCounterpartyId(String id);}

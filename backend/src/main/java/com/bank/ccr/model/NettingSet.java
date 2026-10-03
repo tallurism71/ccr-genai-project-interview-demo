@@ -1,0 +1,3 @@
+package com.bank.ccr.model;
+import jakarta.persistence.*;
+@Entity public class NettingSet { @Id private String id; private String counterpartyId; private String agreementType; private String governingLaw; private boolean enforceable; protected NettingSet(){} public NettingSet(String id,String cp,String a,String law,boolean e){this.id=id;counterpartyId=cp;agreementType=a;governingLaw=law;enforceable=e;} public String getId(){return id;} public String getCounterpartyId(){return counterpartyId;} public String getAgreementType(){return agreementType;} public String getGoverningLaw(){return governingLaw;} public boolean isEnforceable(){return enforceable;} }
